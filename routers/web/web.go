@@ -229,6 +229,7 @@ func ctxDataSet(args ...any) func(ctx *context.Context) {
 func Routes() *web.Route {
 	routes := web.NewRoute()
 
+	routes.Use(common.CustomHeadersHandler(setting.CustomHeaders.WEB))	
 	routes.Head("/", misc.DummyOK) // for health check - doesn't need to be passed through gzip handler
 	routes.Methods("GET, HEAD, OPTIONS", "/assets/*", optionsCorsHandler(), public.FileHandlerFunc())
 	routes.Methods("GET, HEAD", "/avatars/*", storageHandler(setting.Avatar.Storage, "avatars", storage.Avatars))

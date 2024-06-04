@@ -816,6 +816,7 @@ func Routes() *web.Route {
 	m := web.NewRoute()
 
 	m.Use(securityHeaders())
+	m.Use(common.CustomHeadersHandler(setting.CustomHeaders.API))	
 	if setting.CORSConfig.Enabled {
 		m.Use(cors.Handler(cors.Options{
 			AllowedOrigins:   setting.CORSConfig.AllowDomain,

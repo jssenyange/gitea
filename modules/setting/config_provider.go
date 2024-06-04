@@ -178,6 +178,7 @@ func configProviderLoadOptions() ini.LoadOptions {
 	return ini.LoadOptions{
 		KeyValueDelimiterOnWrite: " = ",
 		IgnoreContinuation:       true,
+		PreserveSurroundedQuote: true,
 	}
 }
 
